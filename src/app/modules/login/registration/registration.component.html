@@ -1,0 +1,99 @@
+<div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">{{'Registration Form'}}</h4>
+        </div>
+        <div class="modal-body form-body">
+            <form [formGroup]="form">
+
+
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="name"> {{'Name'}} <span class="form-error">*</span></label>
+                            <div class="plain-select input-add-report">
+                                <input class="form-control" formControlName="name" type="text" id="sale" name="sale"
+                                    placeholder="Enter name">
+                                <p class="form-error pt-1"
+                                    *ngIf="form.get('name').invalid && (form.controls.name.dirty || form.controls.name.touched)">
+                                    {{ form.hasError('', ['name']) ? 'dfsdf' : 'Please enter name' }}
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="name"> {{'Email'}} <span class="form-error">*</span></label>
+                            <div class="plain-select input-add-report">
+                                <input class="form-control" formControlName="email" type="email" id="sale" name="sale"
+                                    placeholder="Enter email address">
+                                <p class="form-error pt-1"
+                                    *ngIf="form.get('email').invalid && (form.controls.email.dirty || form.controls.email.touched)">
+                                    {{ form.hasError('', ['email']) ? '' : 'Please enter email' }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="name">{{'Phone'}} <sup>*</sup></label>
+                            <div class="plain-select input-add-report">
+                                <input class="form-control" formControlName="phone" type="number" id="sale" name="sale"
+                                    placeholder="Enter phone number">
+                                <p class="form-error pt-1"
+                                    *ngIf="form.get('phone').invalid && (form.controls.phone.dirty || form.controls.phone.touched)">
+                                    {{ form.hasError('', ['phone']) ? '' : 'Please enter phone' }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="name">{{'Billing Address'}} <span class="form-error">*</span>
+                            </label>
+                            <textarea class="form-control" rows="3" id="comment" [placeholder]="'Enter address'"
+                                formControlName="billing_address"></textarea>
+                            <p class="form-error pt-1"
+                                *ngIf="form.get('billing_address').invalid && (form.controls.billing_address.dirty || form.controls.billing_address.touched)">
+                                {{ form.hasError('', ['billing_address']) ? '' : 'Please enter billing address' }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="name">{{'Shipping Address'}} <span class="form-error">*</span>
+                            </label>
+                            <textarea class="form-control" rows="3" id="comment" [placeholder]="'Enter address'"
+                                formControlName="shipping_address"></textarea>
+                            <p class="form-error pt-1"
+                                *ngIf="form.get('shipping_address').invalid && (form.controls.shipping_address.dirty || form.controls.shipping_address.touched)">
+                                {{ form.hasError('', ['shipping_address']) ? '' : 'Please enter shipping address' }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix">
+                </div>
+                <br>
+                <div class="row mt-3">
+                    <div class="col-sm-12">
+                        <div class="d-block justify-content-left border-0 mt-3">
+                            <button type="button" data-toggle="modal" data-target="#signal-lost" class="btn"
+                                (click)="save()" [disabled]="form.invalid">{{ 'Save' }}</button>
+                            <button type="button" data-toggle="modal" data-target="#error-message" class="btn"
+                                (click)="cancel()">{{'Cancel'}}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

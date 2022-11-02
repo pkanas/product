@@ -1,0 +1,45 @@
+<div class="row mt-1">
+    <div class="col-md-12">
+        <button type="button" (click)="backButton()" class="btn btn-primary" style="margin-left:20px">Back</button>
+        <button *ngIf="ProductStore.productItem" type="button" (click)="addToCart()" class="btn btn-primary ml-2"
+            style="float:right">Add to cart
+        </button>
+    </div>
+
+    <div class="col-sm-12 " *ngIf="ProductStore.productItem">
+        <div class="widg-padding-cmn bg-white scroll">
+
+            <div class="issue-top-sec">
+                <div class="clearfix">
+                    <h3 class="bold">{{ProductStore.productItem?.title}}</h3>
+                </div>
+                <p>{{ProductStore.productItem?.description}} </p>
+            </div>
+
+            <div class="box-cnt-one mt-2 pl-2 pr-2">
+                <label class="outline-tag mb-1">₹{{ProductStore.productItem?.price}}</label>
+            </div>
+
+            <div class="thumb-pics-bg thumb-pics-col-4 clearfix">
+                <div class="thumb-pics">
+                    <div class="upload-pics upload-pics-small edit-option">
+                        <div class="browse-form-pic"
+                            [ngStyle]="{'background': 'url(' + ProductStore.productItem?.image + ')' }"
+                            style="height:312px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="!ProductStore.productItem">
+        <div class="row">
+            <div class="span4"></div>
+            <div class="span4"><img class="center-block" src="assets/image/no_data.png" alt="" /></div>
+            <div class="span4">
+                <h3 class="text-center" style="margin-right:30px"> NO data found</h3>
+            </div>
+        </div>
+    </div>
+</div>

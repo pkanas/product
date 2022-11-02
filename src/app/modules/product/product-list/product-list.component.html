@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row" *ngIf="ProductStore.loaded">
+        <div class="col-sm-12">
+            <div class="bg-white p-3">
+                <div class="row scroll">
+                    <div class="col-xl-3 col-lg-4 col-sm-6" *ngFor="let product of ProductStore.allProductItems">
+                        <div class="workflow-lst-box template-list" style="cursor: pointer;height: 400px;"
+                            (click)="goToDetailsPage(product?.id, product)">
+                            <h4 class="workflow-lst-box-head bg-main pointer div-middle">{{product?.title.length > 40 ?
+                                product?.title.substring(0,40)+'...':product.title}} </h4>
+                            <!-- {{templates.title.length > 30 ?templates.title.substring(0,30)+'...':templates.title}} -->
+                            <p style="margin-left: 10px;">{{product?.description.length > 100 ?
+                                product?.description.substring(0,120)+'...':product.description}}</p>
+                            <div class="workflow-lst-content pointer p-0">
+                                <div class="box-inner-overflow">
+                                    <div class="template-pic-box"
+                                        [ngStyle]="{'background': 'url(' + product?.image + ')'}"
+                                        style="background: url(images/user-report-one.png) no-repeat; height:270px">
+                                        <div class="box-light-shadow"></div>
+                                    </div>
+                                </div>
+                                <div class="box-cnt-one mt-2 pl-2 pr-2">
+                                    <label class="outline-tag mb-1">₹{{product?.price}}</label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!ProductStore.loaded">
+        <app-loader></app-loader>
+    </div>
+</div>

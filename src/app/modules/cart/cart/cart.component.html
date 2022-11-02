@@ -1,0 +1,55 @@
+<div class="row scroll">
+    <div class="col-md-12">
+        <button type="button" (click)="backButton()" class="btn btn-primary" style="margin-left:20px">Back</button>
+    </div>
+
+
+    <div id="w" *ngIf="ProductStore.cartData">
+        <header id="title">
+            <h1>Product Cart</h1>
+        </header>
+        <div id="page">
+            <table id="cart">
+                <thead>
+                    <tr>
+                        <th class="first">Photo</th>
+                        <th class="second">Qty</th>
+                        <th class="third">Product</th>
+                        <th class="fourth">Line Total</th>
+                        <th class="fifth">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="productitm">
+                        <td><img src="{{ProductStore.cartData?.image}}" class="thumb"></td>
+                        <td><input type="number" value="1" min="0" max="99" class="qtyinput"></td>
+                        <td>{{ProductStore.cartData?.title}}</td>
+                        <td>₹{{ProductStore.cartData?.price}}</td>
+                        <td><span class="remove" (click)="delete()"><img src="https://i.imgur.com/h1ldGRr.png"
+                                    alt="X"></span></td>
+                    </tr>
+                    <tr class="totalprice">
+                        <td class="light">Total:</td>
+                        <td colspan="2">&nbsp;</td>
+                        <td colspan="2"><span class="thick">₹{{ProductStore.cartData?.price}}</span></td>
+                    </tr>
+
+                    <!-- checkout btn -->
+                    <tr class="checkoutrow">
+                        <td colspan="5" class="checkout"><button id="submitbtn">Checkout Now!</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="!ProductStore.cartData">
+        <div class="row">
+            <div class="span4"></div>
+            <div class="span4"><img class="center-block" src="assets/image/no_data.png" alt="" /></div>
+            <div class="span4">
+                <h3 class="text-center" style="margin-right:30px"> NO data found</h3>
+            </div>
+        </div>
+    </div>
+</div>
